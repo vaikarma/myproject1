@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myproject</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <br>
+    <%if current_user%>
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+      <%=link_to 'logut','/users/sign_out',method: :delete%>
+    
+    <%else%>
+     <%=link_to 'login','/users/sign_in'%>
+     <%=link_to 'signUp','/users/sign_up'%>
+    
+    <%end%>
+    <%= yield %>
+  </body>
+</html>
