@@ -1,0 +1,32 @@
+<br>
+<h1>YOUR ITEMS</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>product_name</th>
+      <th>product_price</th>
+      <th>product_quantity</th>
+      <th>seller_name</th>
+      <th>subtotal</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @carts.each do |c| %>
+      <tr>
+        <td><%=c.pro_name%></td>
+        <td><%=c.pro_price%></td>
+        <td><%=c.pro_quantity%></td>
+        <%sellername=User.find(c.sell_id)%>
+        <td><%=sellername.name%></td>
+        <%itemamt=(c.pro_quantity).to_i*(c.pro_price).to_i%>
+        <td><%=itemamt%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'chekout', customer_index_path%>
+<br>
+<%= link_to 'Back', customer_index_path%>

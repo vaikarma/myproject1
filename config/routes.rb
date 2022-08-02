@@ -5,9 +5,8 @@ Rails.application.routes.draw do
     get 'product/index'
   resources :customer
     root 'home#index'
- 
-    devise_for :users do
-      resources :products
-    end
+      resources :carts
+    devise_for :users
+    resources :products
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

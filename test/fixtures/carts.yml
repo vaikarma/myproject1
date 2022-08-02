@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pro_name: MyString
+  pro_price: 9.99
+  pro_quantity: 1
+  product_id: 1
+  user_id: 1
+
+two:
+  pro_name: MyString
+  pro_price: 9.99
+  pro_quantity: 1
+  product_id: 1
+  user_id: 1
