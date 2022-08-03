@@ -3,11 +3,13 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+
+      <th>product_Name</th>
       <th>Price</th>
+      <th>seller_name</th>
       <th>Stoke Available</th>
       <th>Select Quantity</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 <tbody>
@@ -20,9 +22,12 @@
         <td><%= form.hidden_field :sell_id,value: product.user_id %></td>
         <td><%= form.hidden_field :pro_name,value: product.name %></td>
         <td><%= form.hidden_field :pro_price,value: product.price %></td>
+        <td><%= form.hidden_field :subtotal,value: 0 %></td>
+        <%var=User.find(product.user_id)%>
         <td><%=product.id%></td>  
         <td><%= product.name %></td>
         <td><%= product.price %></td>
+        <td><%=var.name%></td>
         <% if product.quantity.nil? ||product.quantity==0%>
         <td><strong>out of Stock</strong></td>
         <td><%= link_to 'GO TO cart',carts_path%></td>
@@ -38,4 +43,5 @@
  </tbody>
 </table>
 <br>
-<%= link_to 'my cart',carts_path%>
+<h1><%= link_to 'my cart',carts_path%></h1>
+<h1><%= link_to 'my Order',myorder_orders_path%></h1>

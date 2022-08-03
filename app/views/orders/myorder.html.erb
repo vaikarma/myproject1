@@ -1,0 +1,23 @@
+<br>
+<h1>hskfksfslsfl</h1>
+<table>
+<tr>
+<th>NAME</th>
+<th>ID</th>
+<th>QUANTITY</th>
+<th>ORDER ID</th>
+<tbody>
+<%@order.each do |x|%>
+<%@u=OrderDetail.where(order_id:x)%>
+<%@u.each do |a|%>
+<tr>
+<td><%=a.name%></td>
+<td><%=a.product_id%></td>
+<td><%=a.quantity%></td>
+<td><%=a.order_id%></td>
+</tr>
+<br>
+<%end%>
+<%end%>
+</tbody>
+</table>

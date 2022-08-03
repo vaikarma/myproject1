@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+resources :orders do
+  get 'myorder', :on => :collection
+end
   resources :products
   get 'customer/index'
   get 'seller/index'
