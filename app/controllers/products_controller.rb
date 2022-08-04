@@ -19,6 +19,10 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
   end
+  def mydashbord
+    @user=User.find(current_user.id)
+    @userprod=@user.products
+  end
 
   # POST /products or /products.json
   def create

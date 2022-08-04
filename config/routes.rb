@@ -10,6 +10,7 @@ end
     root 'home#index'
       resources :carts
     devise_for :users
-    resources :products
+    resources :products 
+      get 'mydashbord', to: "products#mydashbord"
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,36 @@
+<br>
+<h1>SOLD PRODUCT</h1>
+<br>
+<table >
+<thead>
+<tr>
+<th>Product NAME</th>
+<th>Custpomer Name</th>
+<th>QUANTITY</th>
+<th>Toatl Price</th>
+<th>orderDate</th>
+<tr>
+</thead>
+<tbody>
+<%@userprod.ids.each do |var|%>
+<%c=0%>
+<%x=OrderDetail.find_by(product_id:var)%>
+<%if x.nil?%>
+<%else%>
+<%c=c+1%>
+<tr>
+<td><%=x.name%></td>
+<%o=Order.find_by(id:x.order_id)%>
+<%n=o.user_id%>
+<%var1=User.find(n)%>
+<td><%=var1.name%></td>
+<td><%=x.quantity%></td>
+<td><%=x.subtotal%></td>
+<td><%=o.created_at%></td>
+</tr>
+<%end%>
+<%end%>
+</tbody>
+</table>
+
+<%=link_to 'Back' ,'/products'%>

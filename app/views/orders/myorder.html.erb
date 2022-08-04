@@ -1,11 +1,15 @@
 <br>
-<h1>hskfksfslsfl</h1>
-<table>
+<%us=User.find(@user)%>
+<h1>Hello <%=us.name%></h1>
+<br>
+<h3>your ORDER DETAILS</h3>
+<table >
 <tr>
 <th>NAME</th>
 <th>ID</th>
 <th>QUANTITY</th>
 <th>ORDER ID</th>
+<th>Price</th>
 <tbody>
 <%@order.each do |x|%>
 <%@u=OrderDetail.where(order_id:x)%>
@@ -15,6 +19,7 @@
 <td><%=a.product_id%></td>
 <td><%=a.quantity%></td>
 <td><%=a.order_id%></td>
+<td><%=a.subtotal%></td>
 </tr>
 <br>
 <%end%>
