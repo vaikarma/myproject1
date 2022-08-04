@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  layout "customer_layout"
   def index
     @u = User.find(current_user.id)
     @order=Order.last

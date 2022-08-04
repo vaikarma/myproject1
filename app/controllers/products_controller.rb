@@ -1,10 +1,13 @@
 class ProductsController < ApplicationController
+  layout "seller_layout"
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
   def index
+   
     @u = User.find(current_user.id)
     @products=@u.products
+    
   end
 
   # GET /products/1 or /products/1.json

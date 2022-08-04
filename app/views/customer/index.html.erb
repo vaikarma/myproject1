@@ -1,61 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<style>
 
-</style>
-
-  </head>
-  <body>
   <%u=User.find(@user.id)%>
-  <h1> HELLO <%=u.name%></h1>
-<h1>Products</h1>
+  <h5>HELLO <%=u.name%></h5>
+   <div class="col col-lg-2">
+  <h1 class="bg-primary"style="text-align:center;">Products</h1>
+    </div>
 
-<div style="font-size:20px; padding:10px; font-weight:bold;">
+<div style=" border-spacing:0 20px;margin-top:40px;">
+<table class="table table-sm ">
+<thead  class="table-active">
     <tr>
-      <th>Product_Name
-      </th>
-      <th>| Price</th>
-      <th>| Peller_name</th>
-      <th>| Stoke Available</th>
-      <th>| Select Quantity</th>
+      <th>NO</th>
+      <th>Product_Name </th>
+      <th> Price</th>
+      <th>Peller_name</th>
+      <th> Stoke Available</th>
+      <th>Select Quantity</th>
       <th colspan="5"></th>
     </tr>
-    </div>
-  
-    
+    </thead>
+  <tbody>
 <% @products.each do |product| %>
-
+ 
    <%=form_with model: product, url:carts_path, method: :post do |form| %>
-  <tr> 
+  <tr class="table-primary"> 
+   <%var=User.find(product.user_id)%>
+        <td class="table-primary"><%=product.id%></td>  
+        <td class="table-danger"><%= product.name %></td>
+        <td class="table-success"><%= product.price %></td>
+        <td><%=var.name%></td>
+        <% if product.quantity.nil? ||product.quantity==0%>
+        <td ><strong>out of Stock</strong></td>
+        <td><%= link_to 'GO TO cart',carts_path%></td>
+        <%else%>
+        <td><%= product.quantity %></td>
+        <td ><%=form.number_field 'pro_quantity', min: 1, max: product.quantity, step: 1%></td>
+        <td ><%= link_to 'Viwe', customer_path(product) %></td>
+        <td ><%=form.submit "ADD TO CART"%></td>
+         <%end%>
         <td><%= form.hidden_field :product_id,value: product.id %></td>
         <td><%= form.hidden_field :sell_id,value: product.user_id %></td>
         <td><%= form.hidden_field :pro_name,value: product.name %></td>
         <td><%= form.hidden_field :pro_price,value: product.price %></td>
         <td><%= form.hidden_field :subtotal,value: 0 %></td>
-        <%var=User.find(product.user_id)%>
-        <td><%=product.id%></td>  
-        <td><%= product.name %></td>
-        <td><%= product.price %></td>
-        <td><%=var.name%></td>
-        <% if product.quantity.nil? ||product.quantity==0%>
-        <td><strong>out of Stock</strong></td>
-        <td><%= link_to 'GO TO cart',carts_path%></td>
-        <%else%>
-        <td><%= product.quantity %></td>
-        <td><%=form.number_field 'pro_quantity', min: 1, max: product.quantity, step: 1%></td>
-        <td><%= link_to 'Viwe', customer_path(product) %></td>
-        <td><%=form.submit "ADD TO CART"%></td>
-         <%end%>
       </tr>
    <%end%>
 <%end%>
-
+</tbody>
+</table>
+</div>
 <br>
-<h1><%= link_to 'my cart',carts_path%></h1>
-<h1><%= link_to 'my Order',myorder_orders_path%></h1>
-</body>
-</html>
+<h1 class="badge bg-default text-wrap"> <%= link_to 'Back',customer_index_path%></h1>
