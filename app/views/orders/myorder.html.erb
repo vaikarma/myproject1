@@ -1,15 +1,14 @@
-<br>
-<%us=User.find(@user)%>
-<h1>Hello <%=us.name%></h1>
-<br>
-<h3>your ORDER DETAILS</h3>
-<table >
-<tr>
+<h3>YOUR ORDER DETAILS</h3>
+<table class="table table-lg">
+<thead >
+<tr class="table-dark">
 <th>NAME</th>
 <th>ID</th>
 <th>QUANTITY</th>
 <th>ORDER ID</th>
 <th>Price</th>
+<th>OrderDate</th>
+<thead>
 <tbody>
 <%@order.each do |x|%>
 <%@u=OrderDetail.where(order_id:x)%>
@@ -20,9 +19,11 @@
 <td><%=a.quantity%></td>
 <td><%=a.order_id%></td>
 <td><%=a.subtotal%></td>
+<td><%=a.created_at%></td>
 </tr>
-<br>
+
 <%end%>
 <%end%>
 </tbody>
 </table>
+<%= button_to 'Back', customer_index_path, method: :get ,class:"btn btn-primary btn-block",style:"float:right;"%>

@@ -1,3 +1,4 @@
+<%= image_tag "bac.jpg",style:"height:600px;width:1254px; position:absolute;left:15px;top:75px;z-index:-1;"%>
 <%= form_with(model: product) do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
@@ -10,23 +11,31 @@
       </ul>
     </div>
   <% end %>
-
+<div style="padding:100px 10px 150px 70px;margin-right:670px;border-radius: 25px;margin-left:170px;margin-top:10px;" class="bg-danger">
   <div class="field">
     <%= form.label :name %>
+    <br>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
     <%= form.label :price %>
+    <br>
     <%= form.text_field :price %>
   </div>
 
   <div class="field">
     <%= form.label :quantity %>
+    <br>
     <%= form.number_field :quantity %>
   </div>
 
-  <div class="actions">
+  <div class="actions" style="float:left;margin-top:15px;">
     <%= form.submit %>
   </div>
+   <div class="actions" style="float:right;margin-top:10px;margin-right:80px;">
+  <%= button_to 'Back', products_path, method: :get ,class:"btn btn-primary btn-block"%> 
+  </div>
+  </div>
+ </div>
 <% end %>

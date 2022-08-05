@@ -1,9 +1,9 @@
 <br>
-<h1>YOUR ITEMS</h1>
+<h3>YOUR ITEMS</h3>
 
-<table>
+<table class="table table-lg">
   <thead>
-    <tr>
+    <tr class="table-dark">
       <th>product_name</th>
       <th>product_price</th>
       <th>product_quantity</th>
@@ -41,4 +41,4 @@
 <%=form.submit "CHEKOUT"%>
 <%end%>
 <br>
-<%= link_to 'Back', customer_index_path%>
+<%= button_to 'Back', customer_index_path, method: :get ,class:"btn btn-primary btn-block",style:"float:right;"%>

@@ -1,8 +1,8 @@
 <br>
 <h1>SOLD PRODUCT</h1>
 <br>
-<table >
-<thead>
+<table class="table" >
+<thead class="table-primary">
 <tr>
 <th>Product NAME</th>
 <th>Custpomer Name</th>
@@ -18,7 +18,7 @@
 <%if x.nil?%>
 <%else%>
 <%c=c+1%>
-<tr>
+<tr class="table-success">
 <td><%=x.name%></td>
 <%o=Order.find_by(id:x.order_id)%>
 <%n=o.user_id%>
