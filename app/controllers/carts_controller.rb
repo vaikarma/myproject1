@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  load_and_authorize_resource
   layout "customer_layout"
   def index
     @u = User.find(current_user.id)
@@ -54,6 +55,6 @@ end
     params.require(:product).permit(:pro_name,:pro_quantity,:pro_price,:product_id,:sell_id,:subtotal)
   end
   def cart_params
-    params.require(:cart).permit(:pro_quantity)
+    params.permit(:pro_quantity)
   end
 end

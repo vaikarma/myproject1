@@ -4,8 +4,7 @@ resources :orders do
 end
   resources :products
   get 'customer/index'
-  get 'seller/index'
-    get 'product/index'
+    get 'products/index'
   resources :customer
     root 'home#index'
       resources :carts
@@ -13,7 +12,9 @@ end
     devise_scope :user do  
       get '/users/sign_out' => 'devise/sessions#destroy'     
    end
-    resources :products 
+    resources :products
       get 'mydashbord', to: "products#mydashbord"
+      post 'search', to: "customer#search"
+      post 'searchp', to: "products#searchp"
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  load_and_authorize_resource
   layout "customer_layout"
   def index
     @u = User.find(current_user.id)

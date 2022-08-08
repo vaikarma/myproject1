@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
   layout "seller_layout"
   before_action :set_product, only: %i[ show edit update destroy ]
 
@@ -25,6 +26,16 @@ class ProductsController < ApplicationController
   def mydashbord
     @user=User.find(current_user.id)
     @userprod=@user.products
+  end
+  def searchp
+    keyword=params[:query].squeeze(' ').strip
+    @prods=Product.where('products.name LIKE ?',"%#{keyword}%")
+    @products=Array.new
+    @prods.each do |p|
+      if current_user.id==p.user_id
+      @products.push(p)
+      end
+    end
   end
 
   # POST /products or /products.json
