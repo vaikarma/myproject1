@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_03_114730) do
+ActiveRecord::Schema.define(version: 2022_08_09_094943) do
 
   create_table "carts", force: :cascade do |t|
     t.string "pro_name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2022_08_03_114730) do
     t.string "surname"
     t.boolean "seller"
     t.boolean "customer"
+    t.string "token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
